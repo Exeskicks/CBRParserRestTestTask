@@ -1,11 +1,11 @@
 package com.ExchangeRates.getExchangeRates.dto;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 public record ExchangeRatesDto(
-    String num_code,
-    Date date,
+    String charCode,
+    LocalDate date,
     BigDecimal value
 ) {
 }
