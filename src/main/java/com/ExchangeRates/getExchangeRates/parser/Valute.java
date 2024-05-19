@@ -18,7 +18,7 @@ import lombok.Setter;
 public class Valute {
 
     @XmlAttribute(name = "Valute ID")
-    private String valute_id;
+    private String valuteId;
 
     @XmlElement(name = "NumCode")
     private String numCode;
@@ -33,5 +33,5 @@ public class Valute {
     private String name;
 
     @XmlElement(name = "VunitRate")
-    private String valuerate;
+    private String valueRate;
 }

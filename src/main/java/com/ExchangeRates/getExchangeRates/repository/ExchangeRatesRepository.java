@@ -12,4 +12,6 @@ import java.util.Optional;
 public interface ExchangeRatesRepository extends JpaRepository<ExchangeRates, Long> {
 
     Optional<ExchangeRates> findByCharCodeAndDate(String charCode, LocalDate date);
+
+    Boolean existsByCharCodeAndDate(String charCode, LocalDate date);
 }

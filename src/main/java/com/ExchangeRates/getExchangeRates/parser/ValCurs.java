@@ -20,7 +20,7 @@ public class ValCurs  {
     @XmlAttribute(name = "Date")
     private String date;
 
-    @XmlAttribute(name = "name")
+    @XmlAttribute(name = "Name")
     private String name;
 
     @XmlElement(name = "Valute")

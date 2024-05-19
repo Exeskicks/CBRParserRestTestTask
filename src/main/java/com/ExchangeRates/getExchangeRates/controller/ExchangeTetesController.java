@@ -1,8 +1,6 @@
 package com.ExchangeRates.getExchangeRates.controller;
 
 
-import com.ExchangeRates.getExchangeRates.dto.ExchangeRatesDto;
-import com.ExchangeRates.getExchangeRates.service.CurrencyService;
 import com.ExchangeRates.getExchangeRates.service.ExchangeRatesService;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,7 +19,7 @@ public class ExchangeTetesController {
 
     @GetMapping
     public ResponseEntity<?> getCurrencyRate(@RequestParam String charCode,
-                      @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dsd",
+                      @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd",
                       iso = DateTimeFormat.ISO.DATE) LocalDate date)
     {
         return ResponseEntity.ok(exchangeRatesService.getExchangeRates(charCode, date));

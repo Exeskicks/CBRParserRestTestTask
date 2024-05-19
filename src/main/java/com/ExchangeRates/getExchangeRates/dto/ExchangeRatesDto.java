@@ -1,11 +1,19 @@
 package com.ExchangeRates.getExchangeRates.dto;
 
+import lombok.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public record ExchangeRatesDto(
-    String charCode,
-    LocalDate date,
-    BigDecimal value
-) {
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class ExchangeRatesDto{
+
+    String charCode;
+    LocalDate date;
+    BigDecimal value;
 }

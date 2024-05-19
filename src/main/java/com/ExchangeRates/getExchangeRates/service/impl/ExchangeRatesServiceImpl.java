@@ -20,28 +20,15 @@ public class ExchangeRatesServiceImpl implements ExchangeRatesService {
     private final CurrencyService currencyService;
 
     @Override
-    public ExchangeRates saveExchangeRates(ExchangeRatesDto exchangeRatesDto) {
+    public Optional<ExchangeRatesDto> getExchangeRates(String charCode, LocalDate date){
 
-        ExchangeRates exchangeRates = ExchangeRates.builder()
-            .numCode(exchangeRatesDto.charCode())
-            .date(LocalDate.now())
-            .value(exchangeRatesDto.value())
-            .build();
+        currencyService.fetchAndSaveCurrencies(date);
+        Optional<ExchangeRates> exchangeRates = exchangeRatesRepository.findByCharCodeAndDate(charCode, date);
 
-
-       exchangeRatesRepository.save(exchangeRates);
-
-        return exchangeRates;
-    }
-
-    @Override
-    public Optional<ExchangeRates> getExchangeRates(String charCode, LocalDate date){
-
-        Optional<ExchangeRates> exchangeRate = exchangeRatesRepository.findByCharCodeAndDate(charCode, date);
-        if (exchangeRate.isEmpty()) {
-              currencyService.fetchAndSaveCurrencies(date);
-              exchangeRate = exchangeRatesRepository.findByCharCodeAndDate(charCode, date);
-        }
-        return exchangeRate;
+        return exchangeRates.map(er -> ExchangeRatesDto.builder()
+            .charCode(er.getCharCode())
+            .date(er.getDate())
+            .value(er.getValue())
+            .build());
     }
 }
